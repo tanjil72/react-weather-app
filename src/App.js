@@ -7,9 +7,15 @@ function App() {
     <div className="App">
       <Header />
       <SearchBox />
+      
       <div id="imgContainer">
-        <text>Hello world</text>
+        <div style={{display:'flex',flexDirection:'column'}}>
+        <text style={{color:"white",fontSize:"30px",alignItems:'center'}}>Hello world</text>
+        <text style={{placeItems:'flex-start'}}>Hello world</text>
+        </div>
+        
       </div>
+      
     </div>
   );
 }
