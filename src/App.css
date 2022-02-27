@@ -2,6 +2,25 @@
   text-align: center;
 }
 
+.heading{
+  background-color: cadetblue;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+#head{
+  color: white;
+  font-size: 40px;
+}
+.searchBox{
+  display: inline;
+  width: 30%;
+  height: 30px;
+  margin-top: 10px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
