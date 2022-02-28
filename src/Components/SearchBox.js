@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CardComp from "./CardComp";
 import CelciousConverter from "./CelciousConverter";
+import IconComp from "./IconComp";
 
 export default function SearchBox() {
   const [data, setData] = useState("");
@@ -48,7 +49,7 @@ export default function SearchBox() {
           <CelciousConverter temp={data.temp} />
         </div>
 
-        <img
+        {/* <img
           src={
             data.icon
               ? require("../icons/" + data.icon + ".png")
@@ -57,15 +58,19 @@ export default function SearchBox() {
           width="100px"
           height="100px"
           alt="Weather forecast"
-        />
+        /> */}
+        <IconComp icon={data.icon} width="100px" height="100px"/>
 
+        <div style={{display:'flex',flexDirection:'column',marginTop:'20px'}}>
         <text style={{ fontSize: "20px", marginBottom: "10px" }}>
           {data.conditions}
         </text>
         <text style={{ fontSize: "20px", marginRight: "5px" }}>
           Humidity: {Math.ceil(data.humidity)}%
         </text>
-        <div style={{ display: "flex", flexDirection: "row",marginTop:'20px' }}>
+        </div>
+        
+        <div style={{ display: "flex", flexDirection: "row",marginTop:'100px',backgroundColor:'gray',borderRadius:'10px' }}>
           <CardComp />
           <CardComp />
           <CardComp />
