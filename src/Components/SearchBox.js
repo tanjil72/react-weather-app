@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from "react";
-import FtoC_Converter from "./FtoC_Converter";
-import MemoComp from "./MemoComp";
+import React, { useState } from "react";
+import CelciousConverter from "./CelciousConverter";
 
 export default function SearchBox() {
   const [data, setData] = useState("");
   const [address, setAddress] = useState("");
   const [search, setSearch] = useState();
 
-  function handleclick() {
+ 
+  function Capitalize(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+
+  function handleSearch() {
     fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${search}?key=XUGYEAM5JEZ4DKTFZ8W58T4NW`,
       {}
@@ -25,6 +30,7 @@ export default function SearchBox() {
   }
 
   return (
+
     <div>
       <input
         className="searchBox"
@@ -32,15 +38,15 @@ export default function SearchBox() {
         placeholder="Search City"
         onChange={(e) => setSearch(e.target.value)}
       ></input>
-      <button id="searchButton" onClick={handleclick}>
+      <button id="searchButton" onClick={handleSearch}>
         Search
       </button>
       <div id="imgContainer">
-        <text style={{ fontSize: "50px" }}>{address}</text>
-        <FtoC_Converter temp={data.temp}/>
+        <text style={{ fontSize: "50px" }}>{Capitalize(address)}</text>
+        <CelciousConverter temp={data.temp}/>
         <div>
           <img
-            src="https://cdn-icons.flaticon.com/png/512/3222/premium/3222807.png?token=exp=1646024866~hmac=baafabc8c667338dc6806fea52889145"
+            src={data.icon?require('../icons/'+data.icon+'.png'):require('../icons/clear-day.png')}
             width="70px"
             height="70px"
             alt="Weather forecast"
