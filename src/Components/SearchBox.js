@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import FtoC_Converter from "./FtoC_Converter";
 import MemoComp from "./MemoComp";
 
 export default function SearchBox() {
@@ -36,9 +37,7 @@ export default function SearchBox() {
       </button>
       <div id="imgContainer">
         <text style={{ fontSize: "50px" }}>{address}</text>
-        <text style={{ fontSize: "40px", fontWeight: "bold" }}>
-          {data.temp} °F
-        </text>
+        <FtoC_Converter temp={data.temp}/>
         <div>
           <img
             src="https://cdn-icons.flaticon.com/png/512/3222/premium/3222807.png?token=exp=1646024866~hmac=baafabc8c667338dc6806fea52889145"
