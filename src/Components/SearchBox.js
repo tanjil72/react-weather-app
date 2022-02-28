@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardComp from "./CardComp";
 import CelciousConverter from "./CelciousConverter";
 import IconComp from "./IconComp";
@@ -7,12 +7,31 @@ export default function SearchBox() {
   const [data, setData] = useState("");
   const [address, setAddress] = useState("");
   const [search, setSearch] = useState();
-
+  const [days, setDays] = useState();
+  const [loading, setLoading] = useState(true);
   function Capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
+  useEffect(() => {
+    fetch(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Dhaka?key=XUGYEAM5JEZ4DKTFZ8W58T4NW`,
+      {}
+    )
+      .then((response) => response.json())
+      .then((Jsonresponse) => {
+        setData(Jsonresponse.currentConditions);
+        setDays(Jsonresponse.days);
+        setAddress(Jsonresponse.address);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   function handleSearch() {
+    setLoading(true);
     fetch(
       `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${search}?key=XUGYEAM5JEZ4DKTFZ8W58T4NW`,
       {}
@@ -20,8 +39,9 @@ export default function SearchBox() {
       .then((response) => response.json())
       .then((Jsonresponse) => {
         setData(Jsonresponse.currentConditions);
-        console.log(Jsonresponse);
+        setDays(Jsonresponse.days);
         setAddress(Jsonresponse.address);
+        setLoading(false);
       })
       .catch((err) => {
         console.error(err);
@@ -49,34 +69,41 @@ export default function SearchBox() {
           <CelciousConverter temp={data.temp} />
         </div>
 
-        {/* <img
-          src={
-            data.icon
-              ? require("../icons/" + data.icon + ".png")
-              : require("../icons/clear-day.png")
-          }
-          width="100px"
-          height="100px"
-          alt="Weather forecast"
-        /> */}
-        <IconComp icon={data.icon} width="100px" height="100px"/>
+        <IconComp icon={data.icon} width="100px" height="100px" />
 
-        <div style={{display:'flex',flexDirection:'column',marginTop:'20px'}}>
-        <text style={{ fontSize: "20px", marginBottom: "10px" }}>
-          {data.conditions}
-        </text>
-        <text style={{ fontSize: "20px", marginRight: "5px" }}>
-          Humidity: {Math.ceil(data.humidity)}%
-        </text>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginTop: "20px",
+          }}
+        >
+          <text style={{ fontSize: "20px", marginBottom: "10px" }}>
+            {data.conditions}
+          </text>
+          <text style={{ fontSize: "20px", marginRight: "5px" }}>
+            Humidity: {Math.ceil(data.humidity)}%
+          </text>
         </div>
-        
-        <div style={{ display: "flex", flexDirection: "row",marginTop:'100px',backgroundColor:'gray',borderRadius:'10px' }}>
-          <CardComp />
-          <CardComp />
-          <CardComp />
-          <CardComp />
-          <CardComp />
-        </div>
+
+        {days ?(
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginTop: "70px",
+              backgroundColor: "gray",
+              borderRadius: "10px",
+              opacity: ".8",
+            }}
+          >
+            <CardComp date={days[0].datetime} temp={days[0].temp} />
+            <CardComp date={days[1].datetime} temp={days[1].temp} />
+            <CardComp date={days[2].datetime} temp={days[2].temp} />
+            <CardComp date={days[3].datetime} temp={days[3].temp} />
+            <CardComp date={days[4].datetime} temp={days[4].temp} />
+          </div>
+        ):""}
       </div>
     </div>
   );
