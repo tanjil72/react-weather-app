@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CardComp from "./CardComp";
 import CelciousConverter from "./CelciousConverter";
 
 export default function SearchBox() {
@@ -6,11 +7,9 @@ export default function SearchBox() {
   const [address, setAddress] = useState("");
   const [search, setSearch] = useState();
 
- 
-  function Capitalize(str){
+  function Capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
+  }
 
   function handleSearch() {
     fetch(
@@ -30,7 +29,6 @@ export default function SearchBox() {
   }
 
   return (
-
     <div>
       <input
         className="searchBox"
@@ -38,24 +36,42 @@ export default function SearchBox() {
         placeholder="Search City"
         onChange={(e) => setSearch(e.target.value)}
       ></input>
+
       <button id="searchButton" onClick={handleSearch}>
         Search
       </button>
+
       <div id="imgContainer">
-        <text style={{ fontSize: "50px" }}>{Capitalize(address)}</text>
-        <CelciousConverter temp={data.temp}/>
-        <div>
-          <img
-            src={data.icon?require('../icons/'+data.icon+'.png'):require('../icons/clear-day.png')}
-            width="70px"
-            height="70px"
-            alt="Weather forecast"
-          />
+        <text style={{ fontSize: "40px" }}>{Capitalize(address)}</text>
+
+        <div style={{ fontSize: "60px", fontWeight: "bold" }}>
+          <CelciousConverter temp={data.temp} />
         </div>
+
+        <img
+          src={
+            data.icon
+              ? require("../icons/" + data.icon + ".png")
+              : require("../icons/clear-day.png")
+          }
+          width="100px"
+          height="100px"
+          alt="Weather forecast"
+        />
+
         <text style={{ fontSize: "20px", marginBottom: "10px" }}>
           {data.conditions}
         </text>
-        <text style={{ fontSize: "20px" }}>{data.time}</text>
+        <text style={{ fontSize: "20px", marginRight: "5px" }}>
+          Humidity: {Math.ceil(data.humidity)}%
+        </text>
+        <div style={{ display: "flex", flexDirection: "row",marginTop:'20px' }}>
+          <CardComp />
+          <CardComp />
+          <CardComp />
+          <CardComp />
+          <CardComp />
+        </div>
       </div>
     </div>
   );
