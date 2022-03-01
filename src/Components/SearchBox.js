@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CardComp from "./CardComp";
 import CelciousConverter from "./CelciousConverter";
 import IconComp from "./IconComp";
 
 export default function SearchBox() {
+
   const [data, setData] = useState("");
   const [address, setAddress] = useState("");
   const [search, setSearch] = useState();
   const [days, setDays] = useState();
   const [loading, setLoading] = useState(true);
+
+
+
+
   function Capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
@@ -46,7 +52,7 @@ export default function SearchBox() {
       .catch((err) => {
         console.error(err);
       });
-    //console.log(search);
+    
   }
 
   return (
