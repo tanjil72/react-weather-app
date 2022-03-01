@@ -1,20 +1,4 @@
-// export const depositMoney=(amount)=>{
-//     return(dispatch)=>{
-//         dispatch({
-//             type:'deposit',
-//             payload:amount
-//         })
-//     }
-// }
 
-// export const withdrawMoney=(amount)=>{
-//     return(dispatch)=>{
-//         dispatch({
-//             type:'withdraw',
-//             payload:amount
-//         })
-//     }
-// }
 const URL=`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Dhaka?key=XUGYEAM5JEZ4DKTFZ8W58T4NW`
 export function fetchProducts() {
     return dispatch => {
