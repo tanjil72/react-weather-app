@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardComp from "./CardComp";
-import CelciousConverter from "./CelciousConverter";
+import CelsiusConverter from "./CelsiusConverter";
 import IconComp from "./IconComp";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -48,7 +48,7 @@ export default function Search() {
           <text style={{ fontSize: "40px" }}>{Capitalize(data.address)}</text>
 
           <div style={{ fontSize: "60px", fontWeight: "bold" }}>
-            <CelciousConverter temp={data.currentConditions.temp} />
+            <CelsiusConverter temp={data.currentConditions.temp} />
           </div>
 
           <IconComp

@@ -1,34 +1,73 @@
 .App {
   text-align: center;
+  height: 100%;
+  background: black;
 }
 
-.heading{
-  background-color: cadetblue;
+.container {
+  text-align: center;
+}
+
+.searchContainer{
+  margin: 10px;
+}
+.searchBox {
+  width: 26%;
+  height: 30px;
+}
+#searchButton {
+  height: 36px;
+  width: 80px;
+  background-color: black;
+  color: white;
+  margin-left: 8px;
+}
+
+.infoContainer{
+
+  margin-top: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("https://images.pexels.com/photos/4203126/pexels-photo-4203126.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=550&w=1260");
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+}  
+
+.heading {
+  background-color: rgb(95, 158, 160);
   height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-#head{
+
+#head {
   color: white;
   font-size: 40px;
 }
-.searchBox{
-  width: 27%;
-  height: 30px;
-  margin-top: 10px;
+
+.card {
+  background-color: rgba(95, 158, 160, 0.5);
+  color: #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 20px;
 }
-#searchButton{
-height: 37px;
-width: 90px;
-margin-left: 5px;
-}
-#imgContainer{
+
+
+
+#imgContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   margin-top: 10px;
   height: 800px;
   background-repeat: no-repeat;
@@ -36,19 +75,15 @@ margin-left: 5px;
   background-image: url("https://images.pexels.com/photos/4203126/pexels-photo-4203126.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=550&w=1260");
 }
 
-text{
+text {
   color: white;
 }
-
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-
 
 .App-link {
   color: #61dafb;

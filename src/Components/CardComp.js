@@ -1,8 +1,8 @@
 import React from "react";
 import IconComp from "./IconComp";
-import CelciousConverter from "./CelciousConverter";
+import CelsiusConverter from "./CelsiusConverter";
 
-export default function CardComp({ date, temp,icon }) {
+export default function CardComp({ date, temp, icon }) {
   let day = new Date(date);
   let DayName = day.getDay();
 
@@ -30,17 +30,10 @@ export default function CardComp({ date, temp,icon }) {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        marginRight: "10px",
-        padding: "20px",
-      }}
-    >
+    <div className="card">
       <text style={{ marginBottom: "10px" }}>{GetDayName(DayName)}</text>
       <IconComp icon={icon} />
-      <CelciousConverter temp={temp} />
+      <CelsiusConverter temp={temp} />
     </div>
   );
 }
