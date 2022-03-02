@@ -2,7 +2,7 @@ import React from "react";
 import IconComp from "./IconComp";
 import CelciousConverter from "./CelciousConverter";
 
-export default function CardComp({ date, temp }) {
+export default function CardComp({ date, temp,icon }) {
   let day = new Date(date);
   let DayName = day.getDay();
 
@@ -39,7 +39,7 @@ export default function CardComp({ date, temp }) {
       }}
     >
       <text style={{ marginBottom: "10px" }}>{GetDayName(DayName)}</text>
-      <IconComp />
+      <IconComp icon={icon} />
       <CelciousConverter temp={temp} />
     </div>
   );

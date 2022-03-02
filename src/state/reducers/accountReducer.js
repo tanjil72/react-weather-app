@@ -1,7 +1,7 @@
 import {
-  FETCH_PRODUCTS_BEGIN,
-  FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_FAILURE,
+  FETCH_WEATHER_BEGIN,
+  FETCH_WEATHER_SUCCESS,
+  FETCH_WEATHER_FAILURE,
 } from "../action-creator/index";
 
 const initialState = {
@@ -14,21 +14,21 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 
   switch (action.type) {
-    case FETCH_PRODUCTS_BEGIN:
+    case FETCH_WEATHER_BEGIN:
       return {
         ...state,
         loading: true,
         error: null,
       };
 
-    case FETCH_PRODUCTS_SUCCESS:
+    case FETCH_WEATHER_SUCCESS:
       return {
         ...state,
         loading: false,
         items: action.payload,
       };
 
-    case FETCH_PRODUCTS_FAILURE:
+    case FETCH_WEATHER_FAILURE:
      
       return {
         ...state,
