@@ -10,13 +10,18 @@ export default function Search() {
   const [search, setSearch] = useState();
 
   const data = useSelector((state) => state.account.items.items);
-  console.log(data)
+//   console.log(data)
 
   const dispatch = useDispatch();
   const actionCreator = bindActionCreators(actionCreators, dispatch);
 
-  useEffect(() => {
+  function getData(){
     actionCreator.fetchWeather();
+  }
+
+  useEffect(() => {
+        getData();
+    
   }, []);
 
   function Capitalize(str) {
